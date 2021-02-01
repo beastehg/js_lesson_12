@@ -40,7 +40,7 @@ const getVideos = (nameVideo) => {
 	// 	.then((data) => data.json())
 	// 	.then((data) => createContent(data))
 	// 	.catch((error) => console.log(error));
-	$.get("http://itunes.apple.com/search", { limit: 5, entity: "musicVideo", term: nameVideo })
+	$.get("//itunes.apple.com/search", { limit: 5, entity: "musicVideo", term: nameVideo })
 		.then((response) => $.parseJSON(response)) // Пришлось в обьект перегнать
 		.then((response) => createContent(response))
 		.fail((error) => console.log("error", error));
