@@ -1,9 +1,12 @@
-
-
 const $input = $("[data-id=search-video]");
 const $searchForm = $("#search-form");
 const $slider = $(".slider");
 const slickTrack = $(".slick-slide");
+
+
+function playVid(vid) {
+	vid.play();
+}
 
 $searchForm.on("submit", (event) => {
 	event.preventDefault();
@@ -23,6 +26,8 @@ function createContent(data) {
 
 	$(".slick-arrow").on("click", (event) => {
 		console.log(event);
+		let vidCurr = document.querySelector(".slick-current ");
+		playVid(vidCurr);
 	});
 
 	$slider.on("beforeChange", function () {
@@ -40,7 +45,11 @@ const getVideos = (nameVideo) => {
 	// 	.then((data) => data.json())
 	// 	.then((data) => createContent(data))
 	// 	.catch((error) => console.log(error));
-	$.get("//itunes.apple.com/search", { limit: 5, entity: "musicVideo", term: nameVideo })
+	$.get("//itunes.apple.com/search", {
+		limit: 5,
+		entity: "musicVideo",
+		term: nameVideo,
+	})
 		.then((response) => $.parseJSON(response)) // Пришлось в обьект перегнать
 		.then((response) => createContent(response))
 		.fail((error) => console.log("error", error));
