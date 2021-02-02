@@ -44,19 +44,28 @@ const getVideos = (nameVideo) => {
 	// 	.then((data) => data.json())
 	// 	.then((data) => createContent(data))
 	// 	.catch((error) => console.log(error));
-	$.get("//itunes.apple.com/search", {
-		headers: {
-			Authentication: '123'
-		 },
-		 mode: 'cors',
-		// credentials: 'include',
-		limit: 5,
+
+	$.get("https://itunes.apple.com/search", {
+		limit: "10",
 		entity: "musicVideo",
 		term: nameVideo,
 	})
-		.then((response) => $.parseJSON(response)) // Пришлось в обьект перегнать
-		.then((response) => createContent(response))
+		.done((response) => createContent(JSON.parse(response)))
 		.fail((error) => console.log("error", error));
+
+	// $.get("//itunes.apple.com/search", {
+	// 	headers: {
+	// 		Authentication: '123'
+	// 	 },
+	// 	 mode: 'cors',
+	// 	// credentials: 'include',
+	// 	limit: 5,
+	// 	entity: "musicVideo",
+	// 	term: nameVideo,
+	// })
+	// 	.then((response) => $.parseJSON(response)) // Пришлось в обьект перегнать
+	// 	.then((response) => createContent(response))
+	// 	.fail((error) => console.log("error", error));
 };
 
 // Slider Slick
@@ -69,22 +78,25 @@ $(document).ready(function () {
 	});
 });
 
+// class User {
+// 	constructor(names) {
+// 		this.names = names;
+// 	}
+// }
+// let user = new User("dwadwadwa");
 
-// // let arr1 = ["Голубая", "Горбатая", "Белуга", 3, 10, 15, 3];
-// // let arr2 = [[7], [8], [9], [[10]], [11], [[12]]];
-// // let arr3 = Array.from(arr1[0]);
-// x = 42; // создает свойство x в глобальном объекте
-// var y = 43; // объявляет новую переменную, y
-// myobj = {
-// 	test: "lol1",
-// };
-// myobj.h = 4; // создает свойство h в myobj
-// myobj.k = 5; // создает свойство k в myobj
+// class MyUser extends User {
+// 	constructor(names) {
+// 		super(names);
+// 	}
+// }
 
-// delete x; // возвращает true  (x - свойство глобального объекта и может быть удалено)
-// delete y; // возвращает false (delete не влияет на имена переменных)
-// delete Math.PI; // возвращает false (delete не влияет на определенные встроенные свойства)
-// delete myobj.test; // возвращает true  (свойства, определенные пользователем могут быть удалены)
-// console.log(x);
-// // console.log(arr3);
-// // Сделать in искать свойтство в обьекте
+// let myUser = new MyUser("Dimas");
+
+// // Покажет кто родитель обьекта
+// console.log(Object.getPrototypeOf(obj)); // Аналог устаревшего способа через __proto__
+// //
+// console.log(obj.__proto__);
+
+// // console.log(myUser);
+// // console.log(Object.getOwnPropertyNames(user1));
