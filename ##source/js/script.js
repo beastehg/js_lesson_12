@@ -44,10 +44,12 @@ const getVideos = (nameVideo) => {
 	// 	.then((data) => data.json())
 	// 	.then((data) => createContent(data))
 	// 	.catch((error) => console.log(error));
-	$.get("https://itunes.apple.com/search", {
+	$.get("//itunes.apple.com/search", {
 		headers: {
-			Authentication: 'secret'
+			Authentication: '123'
 		 },
+		 mode: 'cors',
+		// credentials: 'include',
 		limit: 5,
 		entity: "musicVideo",
 		term: nameVideo,
