@@ -44,7 +44,7 @@ const getVideos = (nameVideo) => {
 	// 	.then((data) => data.json())
 	// 	.then((data) => createContent(data))
 	// 	.catch((error) => console.log(error));
-	$.get("http://itunes.apple.com/search", {
+	$.get("https://itunes.apple.com/search", {
 		headers: {
 			Authentication: 'secret'
 		 },
