@@ -3,7 +3,6 @@ const $searchForm = $("#search-form");
 const $slider = $(".slider");
 const slickTrack = $(".slick-slide");
 
-
 function playVid(vid) {
 	vid.play();
 }
@@ -45,7 +44,10 @@ const getVideos = (nameVideo) => {
 	// 	.then((data) => data.json())
 	// 	.then((data) => createContent(data))
 	// 	.catch((error) => console.log(error));
-	$.get("//itunes.apple.com/search", {
+	$.get("http://itunes.apple.com/search", {
+		headers: {
+			Authentication: 'secret'
+		 },
 		limit: 5,
 		entity: "musicVideo",
 		term: nameVideo,
@@ -64,3 +66,23 @@ $(document).ready(function () {
 		adaptiveHeight: true,
 	});
 });
+
+
+// // let arr1 = ["Голубая", "Горбатая", "Белуга", 3, 10, 15, 3];
+// // let arr2 = [[7], [8], [9], [[10]], [11], [[12]]];
+// // let arr3 = Array.from(arr1[0]);
+// x = 42; // создает свойство x в глобальном объекте
+// var y = 43; // объявляет новую переменную, y
+// myobj = {
+// 	test: "lol1",
+// };
+// myobj.h = 4; // создает свойство h в myobj
+// myobj.k = 5; // создает свойство k в myobj
+
+// delete x; // возвращает true  (x - свойство глобального объекта и может быть удалено)
+// delete y; // возвращает false (delete не влияет на имена переменных)
+// delete Math.PI; // возвращает false (delete не влияет на определенные встроенные свойства)
+// delete myobj.test; // возвращает true  (свойства, определенные пользователем могут быть удалены)
+// console.log(x);
+// // console.log(arr3);
+// // Сделать in искать свойтство в обьекте
